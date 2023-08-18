@@ -1,0 +1,3 @@
+select surname from employee 
+where surname <> (select surname from employee order by experience desc limit 1)
+order by experience desc limit 1
