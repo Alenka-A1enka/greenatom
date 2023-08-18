@@ -1,0 +1,26 @@
+public static Boolean IsPalindrome(String s) {
+        int len = s.length(); //длина строки
+        Boolean flag = true; //изначально флаг истинный
+
+        //сравниваем два противоположных элемента строки попарно
+        for(int i = 0; i < len / 2; i++) {
+            if(s.charAt(i) != s.charAt(len - i - 1)) {
+                flag = false;
+            }
+        }
+        return flag;
+    }
+    
+public static Boolean Recursiv_IsPalindrome(String s) {
+        if (s.length() <= 1) {
+            return true; //если остался только один элемент или пустая строка
+        }
+
+        Boolean current_flag = s.charAt(0) == s.charAt(s.length() - 1); //текущая проверка двух крайних элементов
+        if(current_flag == false) {
+            return false; //если текущая проверка не истинная заканчиваем рекурсию и возвращаем ложь
+        }
+        s = s.substring(1, s.length() - 1); //отделяем два проверенных элемента
+        
+        return current_flag && Recursiv_IsPalindrome(s); //проверяем текущий флаг и результат след рекурсии
+    }
